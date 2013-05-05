@@ -24,7 +24,7 @@
             visibility: hidden;
         }
  
-        #indicator {
+        .indicator {
             position: fixed;
             width: 30px;
             height: 20px;
@@ -98,50 +98,18 @@
  
  
     </div>
-   
-<div id="indicator"></div>
+
+
+    <script src="js/scrollindicator.js"></script>
  
     <script>
 
-    var indicator = document.getElementById('indicator'),
-        toggle = document.getElementById('toggle-button');
+        var toggle = document.getElementById('toggle-button'),
+            indicator = document.querySelector('.indicator');
 
-    toggle.addEventListener('click', function(){
-        indicator.classList.toggle('hidden');
-    }, false);
-
-    (function(element){
-
-        var prevYOffset = 0,
-        delta = 0;
-
-        function delayedExec(fn, delay){
-            var timer;
-
-            return function(){
-                delta = window.pageYOffset - prevYOffset;
-                element.style.webkitAnimationName = '';
-                element.style.top = (window.innerHeight - delta) + 'px';
-                timer && clearTimeout(timer);
-                timer = setTimeout(fn, delay);
-            }
-        }
-
-        var movePointer = delayedExec(function(){
-            delta  = 0;
-            prevYOffset = window.pageYOffset;
-            startFade();
-            element.style.webkitAnimationName = 'fade';
-            //element.style.top = window.innerHeight + 'px';
-        }, 1000);
-
-        function startFade(){
-            
-        }
-
-        document.addEventListener('scroll', movePointer, false);
-
-    }(indicator));
+        toggle.addEventListener('click', function(){
+            indicator.classList.toggle('hidden');
+        }, false);
 
     </script>
  

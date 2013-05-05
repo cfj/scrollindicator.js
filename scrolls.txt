@@ -2,18 +2,23 @@ There's no real world (or rather, analog) equivalent to this way of reading, unl
 
 you have to keep your eyes fixed on a certain point on the moving page (or at least be peripherelly aware of where you left off) in order to determine where to conintue reading
 
-for many of us this happens almost subconsiously
-
-but compjuters exist to help us, so let's have them help us with this
+for many of us this happens almost subconsiously, but many, especially inexperienced computer users, find it jarring and confusing. Luckily, computers exist to help us, so let's have them help with this.
 
 
+
+Sometimes I'll select a line of text before scrolling to keep track of where I left off reading.
 
 Gör det till en bookmarklet...
 
 scroll props
 http://help.dottoro.com/ljqklmpm.php
 
+There are loads of ways to scroll: using the mousewheel, the trackpad, your finger, dragging the scrollbar, clicking the scrollbar arrows, pressing the arrow keys, or page up/down, clicking the mousewheel, and many more.
 
+Scroll distance
+Roll the wheel one notch to scroll, with the default being three lines at a time.
+
+Scrolling is confusing - 
 Scrolling is jarring
 The confusion of scrolling
 Scrolling through long text content
@@ -23,6 +28,7 @@ Reducing the cognitive load of scrolling a text document – pretentiöst?
 Making scrolling less confusing
 Mitigating the cognitive load of scrolling
 Reducing –
+Adding an indicator 
  
 --
  
@@ -36,7 +42,9 @@ One solution could be to add a transient anchor for your eyes to latch on to whi
 To understand what I mean
 First scroll through this document
 Then try this one.
-See a demo here.
+See a demo here. Try the toggle button to see if you think it helps, or makes any difference at all.
+
+The problem with this is that a lot of people start scrolling before reading all the way to the bottom of the page
 
 
 ?Lägg till enable/disable-knapp

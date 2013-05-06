@@ -1,52 +1,92 @@
-var scrollIndicator = {
+/*!
+ * scrollindicator.js
+ * http://svarden.se/demo/scroll/
+ * MIT licensed
+ *
+ * Copyright (C) 2013 Jonathan Svärdén, http://svarden.se
+ */
+(function(){
+    'use strict';
 
-    options: {
-        for: '.main',
-        fadeDelay: 1000
-    },
+    var scrollIndicator = {
 
-    create: function(){
-        var indicatorElement = document.createElement('span'),
-            indicateOn = document.querySelector(this.options.for);
+        options: {
 
-        indicatorElement.classList.add('indicator');
+            // The text container where you want the indicator to appear. Needs to be positioned.
+            indicateOn: '.main',
 
-        indicateOn.appendChild(indicatorElement);
+            // After this many milliseconds the indicator no longer sticks, and starts disappearing.
+            fadeDelay: 1500,
 
-        return indicatorElement;
+            // CSS class that defines the indicator icon.
+            icon: 'eye'
+        },
 
-    },
+        // Poor man's options extend.
+        extend: function(options){
+                    var prop;
+                    for( prop in options ){
+                      if( prop in this.options ){
+                        this.options[prop] = options[prop];
+                    }
+                }
+            },
 
-    init: function(){
+        create: function(options){
 
-        var element = this.create(),
-            prevYOffset = 0,
-            delta = 0;
-
-        function delayedExec(fn, delay){
-            var timer;
-
-            return function(){
-                delta = window.pageYOffset - prevYOffset;
-                element.style.webkitAnimationName = '';
-                element.style.top = (window.innerHeight - delta) + 'px';
-                timer && clearTimeout(timer);
-                timer = setTimeout(fn, delay);
+            if(options){
+                this.extend(options);
             }
+
+            var indicatorElement = document.createElement('span'),
+                indicateOn = document.querySelector(this.options.indicateOn);
+
+            indicatorElement.classList.add('indicator');
+            indicatorElement.classList.add(this.options.icon);
+            indicatorElement.style.top = window.innerHeight + window.pageYOffset - 23 + 'px';
+
+            indicateOn.appendChild(indicatorElement);
+
+            return indicatorElement;
+        },
+
+        init: function(options){
+            var indicator = this.create(options),
+                scrolling = false;
+
+            function delayedExec(fn, delay){
+                var timer,
+                    yOffset = window.pageYOffset;
+                
+                return function(){
+                    if(!scrolling){
+                        indicator.style.top = window.innerHeight + yOffset - 23 + 'px';
+                        scrolling = true;
+                    }
+
+                    yOffset = window.pageYOffset;
+
+                    indicator.style.webkitAnimationName = '';
+                    indicator.style.MozAnimationName = '';
+                    indicator.style.animationName = '';
+
+                    clearTimeout(timer);
+                    timer = setTimeout(fn, delay);
+                };
+            }
+
+            var updatePosition = delayedExec(function(){
+                    scrolling = false;
+
+                    indicator.style.webkitAnimationName = 'fade';
+                    indicator.style.MozAnimationName = 'fade';
+                    indicator.style.animationName = 'fade';
+
+                }, this.options.fadeDelay);
+
+            document.addEventListener('scroll', updatePosition, false);
         }
+    };
 
-        var movePointer = delayedExec(function(){
-            delta  = 0;
-            prevYOffset = window.pageYOffset;
-            //startFade();
-            element.style.webkitAnimationName = 'fade';
-            //element.style.top = window.innerHeight + 'px';
-        }, this.options.fadeDelay);
-
-
-        document.addEventListener('scroll', movePointer, false);
-    }
-
-};
-
-scrollIndicator.init();
+    scrollIndicator.init();
+}());

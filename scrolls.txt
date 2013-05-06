@@ -28,17 +28,18 @@ Reducing the cognitive load of scrolling a text document – pretentiöst?
 Making scrolling less confusing
 Mitigating the cognitive load of scrolling
 Reducing –
-Adding an indicator 
- 
+Adding an indicator
+Scroll indicator – a UX concept
+
 --
- 
+
 Scrolling in Firefox for example is much less jarring than in Chrome, due to its implementation of smooth scrolling.
 
 On a page dominated by text on a blank background, there’s nothing for your eyes to latch on to while scrolling. Having a sparse page is often a design choice, and adding superfluous content just to provide a background against which to scroll would be silly.
- 
+
 One solution could be to add a transient anchor for your eyes to latch on to while scrolling.
 
- 
+
 To understand what I mean
 First scroll through this document
 Then try this one.
@@ -48,3 +49,22 @@ The problem with this is that a lot of people start scrolling before reading all
 
 
 ?Lägg till enable/disable-knapp
+
+
+
+It's easy to lose your way when scrolling a long text on a white or otherwise featureless background. When  youve read the text on the screen and scroll down, theres a mental overhead of tracking where yoy left off. This is mitigated by  smooth scrollingm however some browsers (Chrome and IE) don't yet implement smooth sscrolling.
+
+Demo
+
+Try scrolling with and without the indicator. I find that you get used to it quite quickly and start missing it if you turn it off.
+
+the code is on Github. Feel free to fork and improve it.
+
+so everything below the indicator is new
+
+
+on a mobile device, or other device with touch screen, your finger acts as an indicator of the point below which content is new. ??? what if you add some kind of indicator to the desktop as well
+
+has to be sufficiently noticable to be useful, while avoiding being distracting.
+
+a large block of text is visually homogenous

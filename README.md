@@ -1,10 +1,29 @@
-Give your eye something to latch onto while scrolling long text content.
+Give your eyes something to latch onto while scrolling long text content.
 
 ##Demo
 
 See it in action [here](http://svarden.se/demo/scroll/).
 
 Sample text from on [Alice's Adventures in Wonderland](http://www.gutenberg.org/ebooks/28885) on Project Gutenberg.
+
+##Usage
+
+Include scrollindicator.js and then start it like this:
+
+    scrollIndicator.init();
+
+You may use the following options:
+
+    {
+        // The text container where you want the indicator to appear. Needs to be positioned.
+        indicateOn: '.main',
+
+        // After this many milliseconds the indicator no longer sticks, and starts disappearing.
+        fadeDelay: 1500,
+
+        // CSS class that defines the indicator icon.
+        icon: 'eye'
+    }
 
 License
 =======

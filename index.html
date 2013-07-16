@@ -290,7 +290,7 @@
             toggledOn = true;
 
         toggle.addEventListener('click', function(){
-            toggledOn = toggledOn ? false : true;
+            toggledOn = !toggledOn;
             indicator.classList.toggle('hidden');
             if(toggledOn){
                 toggle.innerHTML = '<strong>ON</strong>/<span>OFF</span>';

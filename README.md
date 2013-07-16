@@ -12,6 +12,7 @@ Include scrollindicator.js and then start it like this:
 
 ```javascript
 scrollIndicator.init();
+```
 
 You may use the following options:
 
@@ -24,6 +25,7 @@ fadeDelay: 1500,
 
 // CSS class that defines the indicator icon.
 icon: 'eye'
+```
 
 License
 =======

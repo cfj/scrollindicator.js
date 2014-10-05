@@ -6,7 +6,7 @@
  * Copyright (C) 2013 Jonathan Svärdén, http://svarden.se
  */
 
-var scrollIndicator = (function(){
+var scrollIndicator = (function() {
     'use strict';
 
     var settings = {
@@ -22,26 +22,25 @@ var scrollIndicator = (function(){
     };
 
     // Poor man's options extend.
-    var extend = function(options){
+    var extend = function(options) {
                 var prop;
-                for( prop in options ){
-                  if( prop in settings ){
+                for(prop in options) {
+                  if(prop in settings) {
                     settings[prop] = options[prop];
                 }
             }
         };
 
-    var create = function(options){
+    var create = function(options) {
 
-        if(options){
+        if(options) {
             extend(options);
         }
 
         var indicatorElement = document.createElement('span'),
             indicateOn = document.querySelector(settings.indicateOn);
 
-        indicatorElement.classList.add('indicator');
-        indicatorElement.classList.add(settings.icon);
+        indicatorElement.classList.add('indicator', settings.icon);
         indicatorElement.style.top = window.innerHeight + window.pageYOffset - 23 + 'px';
 
         indicateOn.appendChild(indicatorElement);
@@ -49,11 +48,11 @@ var scrollIndicator = (function(){
         return indicatorElement;
     };
 
-    var init = function(options){
+    var init = function(options) {
         var indicator = create(options),
             scrolling = false;
 
-        function delayedExec(fn, delay){
+        function delayedExec(fn, delay) {
             var timer,
                 yOffset = window.pageYOffset;
             
@@ -74,14 +73,14 @@ var scrollIndicator = (function(){
             };
         }
 
-        var updatePosition = delayedExec(function(){
-                scrolling = false;
+        var updatePosition = delayedExec(function() {
+            scrolling = false;
 
-                indicator.style.webkitAnimationName = 'fade';
-                indicator.style.MozAnimationName = 'fade';
-                indicator.style.animationName = 'fade';
+            indicator.style.webkitAnimationName = 'fade';
+            indicator.style.MozAnimationName = 'fade';
+            indicator.style.animationName = 'fade';
 
-            }, settings.fadeDelay);
+        }, settings.fadeDelay);
 
         document.addEventListener('scroll', updatePosition, false);
     };
